@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<link href="css/core.css" media="screen" rel="stylesheet" type="text/css">
+<style type="text/css" media="screen">
+body { font-family:Verdana, Arial, sans-serif; font-size:100%; background:#BAB7B6; }
+a:link, a:visited, a:hover, a:active { text-decoration:none; color:#fff; }
+.setup-header {  } 
+.setup-header h1 { font-size:2.5em; text-align:center; padding:28px 0; } 
+.step-title { text-align:center; }
+.step-cont { padding:24px; }
+p { color:#676767; }
+.pointer { cursor:pointer; }
+.group:after {content: ""; display: table; clear: both; }
+.stepper li { position:relative; float:left; width:33.3%; height:36px; border-right:1px solid transparent; box-sizing:border-box; background:#E7E7E8;  } 
+.stepper li:nth-child(1):after, .stepper li:nth-child(2):after {
+	left:100%;
+	/*left:calc(100% - 24px);*/
+	top:50%;
+	border:solid transparent;
+	content:" ";
+	height:0;
+	width:0;
+	position:absolute;
+	pointer-events:none;
+	border-color:rgba(136,183,213,0);
+	border-left-color:#E7E7E8;
+	border-width:18px;
+	margin-top:-18px;
+	z-index:99;
+}
+
+.stepper li h2 { height:36px; line-height:36px; color:#949599; padding:0 0 0 26px; font-weight:normal; }
+.stepper li.selected { background:#58585A; }
+.stepper li.selected h2 { color:#fff; font-weight:bold; }
+
+/*  ally global nav overrides */
+#global a { font-size:0.65em; color:#baa6b7; }
+.global-nav { height:68px !important; }
+.global-nav .global li { line-height:0; height:68px; }
+.global-nav .global li a { padding-top:34px; }
+.live-search { height:34px !important; }
+.live-search input.search-input { font-size:0.8em; }
+[class*=" icon-"], [class^=icon-] { font-size:0.7em; }
+.icon-ally { font-size: 2em; margin-top: 0px; position: relative; top: -7px; color:#fff;} 
+.row { max-width:1100px !important; }
+.global-nav .utilities li.search-container { margin-top:17px !important; width:170px !important; }
+.global-nav .utilities li.link-container a { padding-top:23px !important; font-size:0.7em; }
+#global li.current a { color:#fff; }
+.global-nav .global li { margin-left:27px !important; }
+.global-nav .global li.current { margin-left:0 !important; }
+.global-nav .global .logo { margin-right:4px; }
+
+/* step1 */
+#step1 { width:1000px; margin:0 auto; }
+#step1 .setup-header { background:#BAB7B6; }
+#step1 .setup-header h1 { color:#fff; } 
+#step1-options { width:60%; max-width:550px; margin:0 auto; }
+#step1-options li { background:#000; height:74px; padding:0 0 0 18px; margin:0 0 8px 0; }
+#step1-options a:link, #step1-options a:visited  { font-size:1.5em; font-weight:normal; color:#3AB3E7; line-height:74px; }
+#step1-options a span { float:right; font-weight:bold; margin-right:28px; }
+.bs-step1-cont { background:#BAB7B6; padding:0 0 38px 0; } 
+#step1-series-btns { display:flex; width:675px; height:120px; margin:60px auto 0 auto;}
+#step1-series-btns li { width:120px; height:120px; background:#000; text-transform:uppercase; margin-right:18px; text-align:center; line-height:120px; }
+#step1-series-btns li:last-child { margin:0; }
+#step1-series-btns li a  { display:block; height:120px; color:#fff; }
+.step1-part2 { width:50%; max-width:775px; margin:0 auto; }
+.step1-part2 h3 { font-size:2em; font-weight:normal; text-align:center; margin:0 0 24px 0; }
+.s1-lhalf-cont { background:#fff; padding:38px 0 62px 0; }
+
+/* step 2 */
+#step2 { width:1000px; margin:0 auto; }
+.bs-step2-cont { background:#fff; margin:18px 0 0 0; padding:0 0 28px 0; }
+#step2 .setup-header h1 { font-size:2em; text-align:center; padding:28px 0;  } 
+#step2 .step-title { font-size:1.8em; padding:30px 0 0 0; clear:both; }
+#step2-series-btns {  max-width:850px; margin:78px auto 0 auto; }
+#step2-series-btns li { float:left; width:220px; height:320px; margin:0 28px 26px 28px; }
+#step2-series-btns li a  { display:block; height:150px; color:#fff; background:#000; text-align:center; line-height:150px; font-weight:bold; }
+#step2-series-btns h3 { text-align:center; margin:8px 0 12px 0; }
+
+/* step 3 */
+#step3 { width:1000px; margin:0 auto; }
+#step3 .setup-header h1 { font-size:2em; text-align:center; padding:28px 0;  } 
+.bs-step3-cont { background:#fff; margin:60px 0 0 0; padding:0 33px; }
+#step3 .step-title { font-size:1.5em; padding:28px 0 65px 0; clear:both; }
+.bs-step3-choice {  width:33.3%; padding:0 24px; }
+.bs-step3-choice img { display:block; margin:0 auto; background:#000; color:#fff; }
+.bs-step3-choice h3 { text-align:center; padding:0 0 8px 0; }
+#step3-content { display:flex; margin:0 0 66px 0; }
+.step3-ct { height:175px; }
+.s3img-sm { position:relative; top:30px; }
+.s3img-md { position:relative; top:20px; }
+.s3img-lg { position:relative; top:10px; }
+.num-emply-cont { text-align:center; font-size:1em; color:#999; padding:16px 0 50px 0; }
+#number-employ { width:425px; padding:4px; color:#676767; text-align:right; }
+
+/* step 4 */
+#step4 { width:1000px; margin:0 auto; }
+#step4 .setup-header h1 { font-size:2em; text-align:center; padding:28px 0;  }
+#step4 .step-title { font-size:1.5em; padding:28px 0 14px 0; clear:both; } 
+.bs-step4-cont { background:#fff; margin:24px 0 0 0; padding:0 38px 64px 38px; }
+.step4-p { padding:0 40px; }
+#step4-content { border:1px solid #999; padding:28px 34px; margin:26px 0 0 0; }
+#step4-content li {}
+.s4-options { margin:0 0 18px 0;s }`
+.s4-options h3 { margin:0 0 6px 0; }
+.s4-opt-item { float:left; display:block; position:relative; width:200px; height:90px; border:1px solid #999; margin:5px 14px 0 0; text-align:center; cursor:pointer; }
+.s4-opt-item input { position:absolute; top:0; right:0; width:21px; height:21px; }
+.s4-opt-item h4 { padding:38px 0 0 0; font-size:0.75em; }
+.s4-pricing p { display:inline-block; width:50%; color:#000; font-size:1.15em; padding:10px 0 0 0; }
+.s4-pricing p span { font-size:2em; padding:10px 0 0 18px; font-weight:bold; }
+#btn-s4next { display:inline-block; float:right; background:#00ADEE; color:#fff; width:175px; height:34px; border:none; margin:18px 0 0 0; cursor:pointer;  }
+
+
+/* step5 */
+#step5 { width:1000px; margin:0 auto; }
+h1.s5-t2 { font-size:3.2em; padding:0 0 33px 0; }
+#step5 .step-title { font-size:2em; padding:28px 0 14px 0; clear:both; } 
+.bs-step5-cont { background:#fff; padding:0 28px 42px; }
+#s5-form { display:flex; flex-wrap:wrap; width:100%; font-weight:bold; }
+#s5-form li { width:50%; font-weight:bold; padding:0 18px 0 0; }
+#s5-form input, #s5-form select { display:block; width:100%; margin:8px 0 0 0; padding:6px; border:1px solid #7d7d7d; color:#555; }
+#step5-content { margin:32px 0 0 0; }
+.s5f1, .s5f2 { }
+.s5f3 { margin:22px 0 0 0; }
+.s5f4 { margin:41px 0 0 0; }
+.s5f8 { margin:46px 0 45px 0; }
+.s5f9 { margin:20px 0 0 0; }
+#s5-form .s5f8 input { display:inline; width:20px; height:20px; vertical-align:bottom; }
+#btn-s5next { display:inline-block; float:right; background:#00ADEE; color:#fff; width:175px; height:34px; border:none; margin:140px 0 0 0; cursor:pointer;  }
+</style>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<script>
+jQuery(document).ready(function($) {
+
+	$("#btn-step1, .btn-step1").on("click", function() {
+	  $("#step1").fadeOut();
+	  $("#step2").fadeIn();
+	});
+	
+	$(".btn-step1-2").on("click", function() {
+	  $("#step1").fadeOut();
+	  $("#step5").fadeIn();
+	});
+	
+});
+</script>
+</head>
+<body>
+
+<div class="global-nav">
+    <div class="row">
+        <a href="#skip-to-main-nav" tabindex="1" class="visuallyhidden">Skip Login and go to navigation</a>
+        <a data-overlay="true" href="#" id="left-off-canvas-icon" aria-label="Navigation Menu" data-track-ui="nav" data-track-elem="icon" data-track-name="MobileNavigation"><span class="icon-burger"></span></a>
+        <div id="global" class="global sm-col-12 md-col-7 lg-col-6">
+            <nav aria-label="Main">
+                <ul class="hide-sm">
+                    <li class="logo">
+                        <a itemprop="url" href="https://www.ally.com/" title="Ally Logo" tabindex="-1" data-track-ui="nav" data-track-elem="icon" data-track-trigger="internal" data-track-name="AllyHomePage"><span class="icon-ally"></span></a>
+                    </li>
+                    <li class="current"><a href="https://www.ally.com/" id="skip-to-main-nav" name="skip-to-main-nav">Ally Bank</a></li>
+                    <li><a href="https://www.ally.com/auto/">Ally Auto</a></li>
+                    <li><a href="https://www.ally.com/about/">About Us</a></li>
+                </ul>
+                <div class="logo centered show-sm hide-md-up">
+                    <a itemprop="url" href="https://www.ally.com/" title="Ally Logo" tabindex="-1" data-track-ui="nav" data-track-elem="icon" data-track-trigger="internal" data-track-name="AllyHomePage"><span class="icon-ally"></span></a>
+                </div>
+            </nav>
+        </div>
+        <div id="utilities" class="utilities md-col-5 lg-col-6" style="">
+            <nav aria-label="Login, Contact, Search and Help">
+                <ul>
+                    <li class="search-container hide-sm hide-md">
+                        <div data-overlay="true" data-searchid="1" class="live-search" role="search" aria-label="Search Ally.com">
+                            <form method="get" action="/search/index.html">
+                                <label for="search-input1" class="visuallyhidden">Enter Keywords</label>
+                                <input name="term" id="search-input1" class="search-input" placeholder="Search" autocomplete="off" type="search">
+                                <input name="context" value="" type="hidden">
+                                <input name="domain" value="www.ally.com" type="hidden">
+                                <input name="filter" value="" type="hidden">
+                                <input class="search-submit" value="" aria-label="Search Button" type="submit">
+                                <button class="search-icon" data-id="search-button" tabindex="-1"><span class="icon-magnify"></span></button>
+                            </form>
+                            <button class="clear-icon hide-lg-up" data-id="clear-button" tabindex="-1">
+                                <span class="icon-cancel"></span>
+                            </button>
+                            <div class="search-results" data-id="search-results">
+                                <nav aria-label="Search Results" aria-expanded="false">
+                                    <div class="header">Top Results</div>
+                                    <ul>
+                                        <li class="view-all" data-id="view-all">
+                                            <a href="https://www.ally.com/search/index.html" aria-label="View All Search Results"><span style="display: inline;" class="icon-magnify"></span>See  all results<span class="icon-rarrow"></span></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="search-container hide-sm hide-lg-up">
+                        <button data-overlay="true" class="search-trigger" data-id="search-button" data-searchid="3">
+                            <span class="icon-magnify"></span>
+                        </button>
+                    </li>
+                    <li class="link-container hide-sm">
+                        <a href="https://www.ally.com/help/" data-track-ui="nav" data-track-elem="link" data-track-trigger="internal" data-track-name="Help">
+                            <span class="icon-question hide-xl"></span><span class="hide-sm hide-md hide-lg">Help</span>
+                        </a>
+                    </li>
+                    <li class="link-container hide-sm toggle-right-margin">
+                        <a href="https://www.ally.com/contact-us/#ally-bank" data-track-ui="nav" data-track-elem="link" data-track-trigger="internal" data-track-name="Contact">
+                            <span class="icon-phone hide-xl"></span><span class="hide-sm hide-md hide-lg">Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- step 1 -->
+<div id="step1" class="step-cont" style="display:block">
+	<section class="setup-header">
+		<h1>Welcome to<br> Ally Business!</h1>
+	</section>
+	<section class="bs-step1-cont">
+		<ul id="step1-options">
+			<li><a href="#" id="btn-step1"><span>&gt;</span><h2>Starting a business?</h2></a></li>
+			<li><a href="#"><span>&gt;</span><h2>Growing your business?</h2></a></li>
+			<li><a href="#"><span>&gt;</span><h2>Navigating your business?</h2></a></li>
+		</ul>
+	</section>
+	<div class="s1-lhalf-cont">
+		<section>
+			<div class="step1-part2">
+				<h3>We've got it covered</h3>
+				<p>Whether you’re looking to stay one step ahead of the game with multiple payment methods, or you need to monitor your banking activities, we have a solution that can help your business.</p>
+			</div>		
+		</section>
+		<section>
+			<ul id="step1-series-btns">
+				<li><a href="#" title="" class="btn-step1-2">Banking</a></li>
+				<li><a href="#" title="" class="btn-step1">Payments</a></li>
+				<li><a href="#" title="" class="btn-step1">Payroll</a></li>
+				<li><a href="#" title="" class="btn-step1">Accounting</a></li>
+				<li><a href="#" title="" class="btn-step1">Insurance</a></li>
+			</ul>
+		</section>
+	</div>
+</div>
+
+<!-- step 2 -->
+<div id="step2" class="step-cont" style="display:none">
+	<section class="setup-header">
+	<h1>Ally Business Setup</h1>
+	<ul class="stepper group">
+		<li><h2>1. Business Type</h2></li>
+		<li><h2>2. Business Size</h2></li>
+		<li><h2>3. Review and Configure</h2></li>
+	</ul>
+
+	<section class="bs-step2-cont">
+		<h2 class="step-title">What type of business do you have?</h2>
+		<ul id="step2-series-btns" class="group">
+			<li>
+				<em><a href="#" title="">Retail Store</a></em>
+				<h3><em>Retail Store</em></h3>
+				<p>A physical or online store where you sell items. Your customers make purchases in-person or via a shopping cart on your web page.</p>
+			</li>
+			<li>
+				<em><a href="#" title="">Restaurant</a></em>
+				<h3><em>Restauran</em>t</h3>
+				<p>A physical restaurant, where customers sit to eat then pay their bill in-person with cash or credit cards.</p> </li>
+			<li>
+				<em><a href="#" title="">Services</a></em>
+				<h3><em>Services</em></h3>
+				<p>You provide services to customers at various locations. Customers pay immediately, in-person or may be sent an invoice.</p> </li>
+			<li>
+				<em><a href="#" title="">Artist</a></em>
+				<h3><em>Artist</em></h3>
+				<p>You create and sell arts, crafts, or other handmade wares at trade shows and other locations and accept various forms of payments.</p> </li>
+			<li>
+				<em><a href="#" title="">Travel</a></em>
+				<h3><em>Travel</em></h3>
+				<p>You provide travel services such as taxi, bus, or other forms of transit. Customers pay in-person at the time of service.</p> 
+			</li>
+			<li>
+				<em><a href="#" title="">Home-based</a></em>
+				<h3><em>Home-based</em></h3>
+				<p>You sell products or provide a service from your home. You send invoices to customers or payments happen remotely.</p> 
+			</li>
+		</ul>
+	</section>
+</div>
+
+<!-- step 3  -->
+<div id="step3" class="step-cont" style="display:none">
+	<section class="setup-header">
+	<h1>Ally Business Setup</h1>
+	<ul class="stepper group">
+		<li><h2>1. Business Type</h2></li>
+		<li><h2>2. Business Size</h2></li>
+		<li><h2>3. Review and Configure</h2></li>
+	</ul>
+
+	<section class="bs-step3-cont">
+		<h2 class="step-title">Which size best describes your business?</h2>
+		<div id="step3-content">
+			<div class="bs-small bs-step3-choice">
+				<div class="step3-ct">
+					<img src="" alt="(small img)" width="80" height="80" class="s3img-sm">
+				</div>
+				<h3><em>Small</em></h3>
+				<p>You have a small location with just one or a few employees.</p>
+			</div>
+			<div class="bs-medium bs-step3-choice">
+				<div class="step3-ct">
+					<img src="" alt="(medium img)" width="110" height="110" class="s3img-md">
+				</div>
+				<h3><em>Medium</em></h3>
+				<p>You have one large location or a few locations but not a lot of assets.</p>
+				<p>You have more than one employee or manager.</p>
+				<p>You recieve payments in many forms but provide limited support.</p>
+			</div>
+			<div class="bs-large bs-step3-choice">
+				<div class="step3-ct">
+					<img src="" alt="(large img)"  width="140" height="140" class="s3img-lg">
+				</div>
+				<h3><em>Large</em></h3>
+				<p>You have multiple locations and many assets.</p>
+				<p>You may have reasonably complicated retail, distribution and supply chain to think about.</p>
+				<p>You have many employees and managers.</p>
+				<p>You receive payments in many forms, and provide many support levels.</p>
+			</div>
+		</div>
+		<hr>
+		<div class="num-emply-cont">
+			<span>Number of employees in your business: <input type="text" id="number-employ" value="0"></span>
+		</div>
+	</section>
+</div>
+
+<!-- step 4  -->
+<div id="step4" class="step-cont" style="display:none">
+	<section class="setup-header">
+	<h1>Ally Business Setup</h1>
+	<ul class="stepper group">
+		<li class=""><h2>1. Business Type</h2></li>
+		<li class=""><h2>2. Business Size</h2></li>
+		<li class="selected"><h2>3. Review and Configure</h2></li>
+	</ul>
+
+	<section class="bs-step4-cont">
+		<h2 class="step-title">Small Retail Package</h2>
+		<p class="step4-p">Customize the package to suit the needs of your business. You can come back and change your selections at any time.</p>
+		<div id="step4-content">
+			<ul>
+				<li>
+					<div class="s4-options group">
+						<h3><em>Payments</em></h3>
+						<label for="sel1" class="s4-opt-item">
+							<h4><em>Payment Center</em></h4>
+							<input type="checkbox" id="sel1">
+						</label>
+						<label for="sel2" class="s4-opt-item">
+							<h4><em>Merchant Processing<br>(Credit/ACH)</em></h4>
+							<input type="checkbox" id="sel2">
+						</label>
+						<label for="sel3" class="s4-opt-item">
+							<h4><em>Ally Merchant DDA</em></h4>
+							<input type="checkbox" id="sel3">
+						</label>
+					</div>
+				</li>
+				<li>
+					<div class="s4-options group">
+						<h3><em>Accounting</em></h3>
+						<label for="sel4" class="s4-opt-item">
+							<h4><em>Sage One</em></h4>
+							<input type="checkbox" id="sel4">
+						</label>
+					</div>						
+				</li>
+				<li>
+					<div class="s4-options group">
+						<h3><em>Banking</em></h3>
+						<label for="sel5" class="s4-opt-item">
+							<h4><em>Ally Line of Credit</em></h4>
+							<input type="checkbox" id="sel5">
+						</label>
+						<label for="sel6" class="s4-opt-item">
+							<h4><em>All Corporate Card</em></h4>
+							<input type="checkbox" id="sel6">
+						</label>
+						<div class="clr"></div>
+					</div>
+				</li>
+				<li>
+					<div class="s4-options group">
+						<h3><em>Banking</em></h3>
+						<label for="sel7" class="s4-opt-item">
+							<h4><em>Partner POS solution</em></h4>
+							<input type="checkbox" id="sel7">
+						</label>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="s4-pricing">
+			<p><em>Monthly Price</em> <span>$59.99</span></p>
+			<button type="button" id="btn-s4next">Next</button>
+		</div>
+	</section>
+</div>
+
+
+<!-- step 5  -->
+<div id="step5" class="step-cont" style="display:none">
+	<section class="setup-header">
+	<h1>Ally Business Setup</h1>
+	<h1 class="s5-t2">Almost Done!</h1>
+
+	<section class="bs-step5-cont group">
+		<h2 class="step-title">Tell us about yourself.</h2>
+		<div id="step5-content">
+			<ul id="s5-form">
+				<li class="s5f1">
+					<label>Full name<input type="text" name="" value="" placeholder="Enter your first and last name"></label>
+				</li>
+				<li class="s5f2">
+					<label>Email<input type="text" name="" value="" placeholder="Enter your email address"></label>
+				</li>
+				<li class="s5f3">
+					<label>Mailing Address<input type="text" name="" value="" placeholder="Line1"></label>
+				</li>
+				<li class="s5f4">
+					<label><input type="text" name="" value="" placeholder="Line2"></label>
+				</li>				
+				<li class="s5f5">
+					<label><input type="text" name="" value="" placeholder="City"></label>
+				</li>
+				<li class="s5f6">
+					<select id="s5-statesel"><option value="">State</option> <option value="AL">Alabama</option> <option value="AK">Alaska</option> <option value="AZ">Arizona</option> <option value="AR">Arkansas</option> <option value="CA">California</option> <option value="CO">Colorado</option> <option value="CT">Connecticut</option> <option value="DE">Delaware</option> <option value="DC">District Of Columbia</option> <option value="FL">Florida</option> <option value="GA">Georgia</option> <option value="HI">Hawaii</option> <option value="ID">Idaho</option> <option value="IL">Illinois</option> <option value="IN">Indiana</option> <option value="IA">Iowa</option> <option value="KS">Kansas</option> <option value="KY">Kentucky</option> <option value="LA">Louisiana</option> <option value="ME">Maine</option> <option value="MD">Maryland</option> <option value="MA">Massachusetts</option> <option value="MI">Michigan</option> <option value="MN">Minnesota</option> <option value="MS">Mississippi</option> <option value="MO">Missouri</option> <option value="MT">Montana</option> <option value="NE">Nebraska</option> <option value="NV">Nevada</option> <option value="NH">New Hampshire</option> <option value="NJ">New Jersey</option> <option value="NM">New Mexico</option> <option value="NY">New York</option> <option value="NC">North Carolina</option> <option value="ND">North Dakota</option> <option value="OH">Ohio</option> <option value="OK">Oklahoma</option> <option value="OR">Oregon</option> <option value="PA">Pennsylvania</option> <option value="RI">Rhode Island</option> <option value="SC">South Carolina</option> <option value="SD">South Dakota</option> <option value="TN">Tennessee</option> <option value="TX">Texas</option> <option value="UT">Utah</option> <option value="VT">Vermont</option> <option value="VA">Virginia</option> <option value="WA">Washington</option> <option value="WV">West Virginia</option> <option value="WI">Wisconsin</option> <option value="WY">Wyoming</option> </select> 
+				</li>
+				<li class="s5f7">
+					<label><input type="text" name="" value="" placeholder="Zip code"></label>
+				</li>
+				<li><!-- space holder --></li>
+				<li class="s5f8">
+					<label for="billing" class="pointer">Billing address <input type="checkbox" name="billing" id="billing"> Same as mailing address</label>
+				<li><!-- space holder --></li>
+				</li>	
+				<li class="s5f9">
+					<label>Date of birth <input type="date" name="" value=""></label>
+				</li>				
+			</ul>
+			<button type="button" id="btn-s5next" class="group">Finish</button>
+
+		</div>
+	</section>
+</div>
+
+
+</body>
+</html>
