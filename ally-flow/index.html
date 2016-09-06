@@ -38,6 +38,8 @@ p { color:#676767; }
 .stepper li.selected h2 { color:#fff; font-weight:bold; }
 
 /*  ally global nav overrides */
+#global { width:614px !important; }
+#utilities { width:auto !important; padding-right:78px; }
 #global a { font-size:0.65em; color:#baa6b7; }
 .global-nav { height:68px !important; }
 .global-nav .global li { line-height:0; height:68px; }
@@ -90,10 +92,10 @@ p { color:#676767; }
 .bs-step3-choice img { display:block; margin:0 auto; background:#000; color:#fff; }
 .bs-step3-choice h3 { text-align:center; padding:0 0 8px 0; }
 #step3-content { display:flex; margin:0 0 66px 0; }
-.step3-ct { height:175px; }
-.s3img-sm { position:relative; top:30px; }
-.s3img-md { position:relative; top:20px; }
-.s3img-lg { position:relative; top:10px; }
+.step3-ct { height:175px; text-align:center; }
+.s3img-sm { position:relative; display:block; box-sizing:border-box; top:30px; width:80px; height:80px; background:#000; margin:0 auto; padding-top:29px; }
+.s3img-md { position:relative; display:block; box-sizing:border-box; top:20px; width:110px; height:110px; background:#000; margin:0 auto; padding-top:42px; }
+.s3img-lg { position:relative; display:block; box-sizing:border-box; top:10px; width:140px; height:140px; background:#000; margin:0 auto; padding-top:54px; }
 .num-emply-cont { text-align:center; font-size:1em; color:#999; padding:16px 0 50px 0; }
 #number-employ { width:425px; padding:4px; color:#676767; text-align:right; }
 
@@ -136,6 +138,38 @@ h1.s5-t2 { font-size:3.2em; padding:0 0 33px 0; }
 <script>
 jQuery(document).ready(function($) {
 
+
+	var hash = window.location.hash;
+	if (hash) {
+		if (hash === "#step1") {
+		  $("#step1").fadeIn();
+		}
+		if (hash === "#step2") {
+		  $("#step1").hide();
+		  $("#step2").fadeIn();
+		}		
+		if (hash === "#step3") {
+		  $("#step1").hide();
+		  $("#step2").hide();
+		  $("#step3").fadeIn();
+		}
+		if (hash === "#step4") {
+		  $("#step1").hide();
+		  $("#step2").hide();
+		  $("#step3").hide();
+		  $("#step4").fadeIn();
+		}		
+		if (hash === "#step5") {
+		  $("#step1").hide();
+		  $("#step2").hide();
+		  $("#step3").hide();
+		  $("#step4").hide();
+		  $("#step5").fadeIn();
+		}
+
+	}
+
+	// step1 action
 	$("#btn-step1, .btn-step1").on("click", function() {
 	  $("#step1").fadeOut();
 	  $("#step2").fadeIn();
@@ -145,7 +179,12 @@ jQuery(document).ready(function($) {
 	  $("#step1").fadeOut();
 	  $("#step5").fadeIn();
 	});
-	
+
+	// step 2 action
+	$("#btn-step1, .btn-step1").on("click", function() {
+	  $("#step1").fadeOut();
+	  $("#step2").fadeIn();
+	});	
 });
 </script>
 </head>
@@ -163,6 +202,7 @@ jQuery(document).ready(function($) {
                     </li>
                     <li class="current"><a href="https://www.ally.com/" id="skip-to-main-nav" name="skip-to-main-nav">Ally Bank</a></li>
                     <li><a href="https://www.ally.com/auto/">Ally Auto</a></li>
+                    <li><a href="index.html">Ally Business</a></li>
                     <li><a href="https://www.ally.com/about/">About Us</a></li>
                 </ul>
                 <div class="logo centered show-sm hide-md-up">
@@ -310,14 +350,14 @@ jQuery(document).ready(function($) {
 		<div id="step3-content">
 			<div class="bs-small bs-step3-choice">
 				<div class="step3-ct">
-					<img src="" alt="(small img)" width="80" height="80" class="s3img-sm">
+					<a href="#" title="" class="s3img-sm">Small</a>
 				</div>
 				<h3><em>Small</em></h3>
 				<p>You have a small location with just one or a few employees.</p>
 			</div>
 			<div class="bs-medium bs-step3-choice">
 				<div class="step3-ct">
-					<img src="" alt="(medium img)" width="110" height="110" class="s3img-md">
+					<a href="#" title="" class="s3img-md">Medium</a>
 				</div>
 				<h3><em>Medium</em></h3>
 				<p>You have one large location or a few locations but not a lot of assets.</p>
@@ -326,7 +366,7 @@ jQuery(document).ready(function($) {
 			</div>
 			<div class="bs-large bs-step3-choice">
 				<div class="step3-ct">
-					<img src="" alt="(large img)"  width="140" height="140" class="s3img-lg">
+					<a href="#" title="" class="s3img-lg">Large</a>
 				</div>
 				<h3><em>Large</em></h3>
 				<p>You have multiple locations and many assets.</p>
