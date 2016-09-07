@@ -32,6 +32,9 @@ p { color:#676767; }
 	margin-top:-18px;
 	z-index:99;
 }
+.stepper li.first:after, .stepper li.middle:after {
+	border-left-color:#58585A;
+}
 
 .stepper li h2 { height:36px; line-height:36px; color:#949599; padding:0 0 0 26px; font-weight:normal; }
 .stepper li.selected { background:#58585A; }
@@ -332,7 +335,7 @@ jQuery(document).ready(function($) {
 	<section class="setup-header">
 	<h1>Ally Business Setup</h1>
 	<ul class="stepper group">
-		<li><h2>1. Business Type</h2></li>
+		<li class="selected first"><h2>1. Business Type</h2></li>
 		<li><h2>2. Business Size</h2></li>
 		<li><h2>3. Review and Configure</h2></li>
 	</ul>
@@ -377,7 +380,7 @@ jQuery(document).ready(function($) {
 	<h1>Ally Business Setup</h1>
 	<ul class="stepper group">
 		<li><h2>1. Business Type</h2></li>
-		<li><h2>2. Business Size</h2></li>
+		<li class="selected middle"><h2>2. Business Size</h2></li>
 		<li><h2>3. Review and Configure</h2></li>
 	</ul>
 
