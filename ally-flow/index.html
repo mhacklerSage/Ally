@@ -93,9 +93,10 @@ p { color:#676767; }
 .bs-step3-choice h3 { text-align:center; padding:0 0 8px 0; }
 #step3-content { display:flex; margin:0 0 66px 0; }
 .step3-ct { height:175px; text-align:center; }
-.s3img-sm { position:relative; display:block; box-sizing:border-box; top:30px; width:80px; height:80px; background:#000; margin:0 auto; padding-top:29px; }
-.s3img-md { position:relative; display:block; box-sizing:border-box; top:20px; width:110px; height:110px; background:#000; margin:0 auto; padding-top:42px; }
-.s3img-lg { position:relative; display:block; box-sizing:border-box; top:10px; width:140px; height:140px; background:#000; margin:0 auto; padding-top:54px; }
+.s3img-sm { position:relative; display:block; box-sizing:border-box; top:30px; width:80px; height:80px; background:#000; margin:0 auto; padding-top:29px; border:4px solid transparent; }
+.s3img-md { position:relative; display:block; box-sizing:border-box; top:20px; width:110px; height:110px; background:#000; margin:0 auto; padding-top:42px; border:4px solid transparent; }
+.s3img-lg { position:relative; display:block; box-sizing:border-box; top:10px; width:140px; height:140px; background:#000; margin:0 auto; padding-top:54px; border:4px solid transparent; }
+.s3img-sm.selected { border:4px solid purple;  }
 .num-emply-cont { text-align:center; font-size:1em; color:#999; padding:16px 0 50px 0; }
 #number-employ { width:425px; padding:4px; color:#676767; text-align:right; }
 
@@ -171,20 +172,55 @@ jQuery(document).ready(function($) {
 
 	// step1 action
 	$("#btn-step1, .btn-step1").on("click", function() {
-	  $("#step1").fadeOut();
+	  $("#step1").hide();
 	  $("#step2").fadeIn();
 	});
 	
 	$(".btn-step1-2").on("click", function() {
-	  $("#step1").fadeOut();
+	  $("#step1").hide();
 	  $("#step5").fadeIn();
 	});
 
 	// step 2 action
 	$("#btn-step1, .btn-step1").on("click", function() {
-	  $("#step1").fadeOut();
+	  $("#step1").hide();
 	  $("#step2").fadeIn();
 	});	
+
+	// step 3 action
+	$("#btn-step2").on("click", function() {
+	  $("#step2").hide();
+	  $("#step3").fadeIn();
+	});	
+
+	// step 4 action
+	$(".s3img-sm").on("click", function() {
+		$(this).toggleClass("selected");
+	});	
+	// step 4 action part 2
+	$("#number-employ").keyup(function (e) {
+	    if (e.keyCode === 13 && $(".s3img-sm").hasClass('selected')) {
+		  $("#step3").hide();
+		  $("#step4").fadeIn();
+	    } else if (e.keyCode === 13 && !$(".s3img-sm").hasClass('selected') ){
+	    	// small not selected
+	    }
+	});
+
+	//step 5
+	$("#btn-s4next").on("click", function() {
+	  $("#step4").hide();
+	  $("#step5").fadeIn();
+	});	
+
+	//step 6
+	$("#btn-s5next").on("click", function() {
+	  // $("#step5").hide();
+	  alert("Need to add next screen");
+	  // $("#step6").fadeIn();
+	});	
+	
+
 });
 </script>
 </head>
@@ -305,7 +341,7 @@ jQuery(document).ready(function($) {
 		<h2 class="step-title">What type of business do you have?</h2>
 		<ul id="step2-series-btns" class="group">
 			<li>
-				<em><a href="#" title="">Retail Store</a></em>
+				<em><a href="#" title="" id="btn-step2">Retail Store</a></em>
 				<h3><em>Retail Store</em></h3>
 				<p>A physical or online store where you sell items. Your customers make purchases in-person or via a shopping cart on your web page.</p>
 			</li>
