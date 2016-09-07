@@ -38,7 +38,7 @@ p { color:#676767; }
 .global-nav .utilities li.link-container a { padding-top:23px !important; font-size:0.7em; }
 #global li.current a { color:#fff; }
 .global-nav .global li { margin-left:27px !important; }
-.global-nav .global li.current { margin-left:0 !important; }
+.global-nav .global li:nth-child(2) { margin-left:0 !important; }
 .global-nav .global .logo { margin-right:4px; }
 
 /* step1 */
@@ -121,7 +121,8 @@ p { color:#676767; }
 #s5-form .s5f8 input { display:inline; width:20px; height:20px; vertical-align:bottom; }
 #btn-s5next { display:inline-block; float:right; background:#00ADEE; color:#fff; width:175px; height:34px; border:none; margin:140px 0 0 0; cursor:pointer;  }
 </style>
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script> -->
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 <script>
 jQuery(document).ready(function($) {
 
@@ -212,8 +213,11 @@ jQuery(document).ready(function($) {
 		alert("Need to add next screen");
 		// $("#step6").fadeIn();
 	});	
-	
 
+	/* prevents */
+	$(".s3img-md, .s3img-lg, .prevent").on("click", function(e) {
+		e.preventDefault();
+	});	
 });
 </script>
 </head>
@@ -229,9 +233,9 @@ jQuery(document).ready(function($) {
                     <li class="logo">
                         <a itemprop="url" href="https://www.ally.com/" title="Ally Logo" tabindex="-1" data-track-ui="nav" data-track-elem="icon" data-track-trigger="internal" data-track-name="AllyHomePage"><span class="icon-ally"></span></a>
                     </li>
-                    <li class="current"><a href="https://www.ally.com/" id="skip-to-main-nav" name="skip-to-main-nav">Ally Bank</a></li>
+                    <li><a href="https://www.ally.com/" id="skip-to-main-nav" name="skip-to-main-nav">Ally Bank</a></li>
                     <li><a href="https://www.ally.com/auto/">Ally Auto</a></li>
-                    <li><a href="index.html">Ally Business</a></li>
+                    <li class="current"><a href="index.html">Ally Business</a></li>
                     <li><a href="https://www.ally.com/about/">About Us</a></li>
                 </ul>
                 <div class="logo centered show-sm hide-md-up">
@@ -339,24 +343,24 @@ jQuery(document).ready(function($) {
 				<p>A physical or online store where you sell items. Your customers make purchases in-person or via a shopping cart on your web page.</p>
 			</li>
 			<li>
-				<em><a href="#" title="">Restaurant</a></em>
+				<em><a href="#" title="" class="prevent">Restaurant</a></em>
 				<h3><em>Restauran</em>t</h3>
 				<p>A physical restaurant, where customers sit to eat then pay their bill in-person with cash or credit cards.</p> </li>
 			<li>
-				<em><a href="#" title="">Services</a></em>
+				<em><a href="#" title="" class="prevent">Services</a></em>
 				<h3><em>Services</em></h3>
 				<p>You provide services to customers at various locations. Customers pay immediately, in-person or may be sent an invoice.</p> </li>
 			<li>
-				<em><a href="#" title="">Artist</a></em>
+				<em><a href="#" title="" class="prevent">Artist</a></em>
 				<h3><em>Artist</em></h3>
 				<p>You create and sell arts, crafts, or other handmade wares at trade shows and other locations and accept various forms of payments.</p> </li>
 			<li>
-				<em><a href="#" title="">Travel</a></em>
+				<em><a href="#" title="" class="prevent">Travel</a></em>
 				<h3><em>Travel</em></h3>
 				<p>You provide travel services such as taxi, bus, or other forms of transit. Customers pay in-person at the time of service.</p> 
 			</li>
 			<li>
-				<em><a href="#" title="">Home-based</a></em>
+				<em><a href="#" title="" class="prevent">Home-based</a></em>
 				<h3><em>Home-based</em></h3>
 				<p>You sell products or provide a service from your home. You send invoices to customers or payments happen remotely.</p> 
 			</li>
